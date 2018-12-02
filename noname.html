@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Kyoto University Authentication System</title>
+    <link rel="stylesheet" type="text/css" href="/idp/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/idp/css/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="/idp/images/logo.jpg" alt="Kyoto University" class="img-responsive center-block" srcset="/idp/images/logo_orig.jpg 6.6x">
+        <h3 class="text-center header-text">Kyoto University Authentication System</h3>
+      </header>
+
+      <div class="column one center-block">
+
+        <div class="jumbotron">
+
+          <form action="/idp/profile/SAML2/Redirect/SSO;jsessionid=902A363D790BE0C11537931F325018B6?execution=e1s1" method="post">
+
+            <legend>
+              Login to kulasis
+            </legend>
+
+            <div class="form-element-wrapper">
+              <input class="form-control input-lg" id="username" name="j_username" type="text" value="" placeholder="Username(ECS-ID or SPS-ID)">
+            </div><!-- /.form-element-wrapper -->
+            <div class="form-element-wrapper">
+              <input class="form-control input-lg" id="password" name="j_password" type="password" value="" placeholder=Password>
+            </div><!-- /.form-element-wrapper -->
+
+            <div class="form-element-wrapper">
+              <input type="checkbox" name="donotcache" value="1"> Don't Remember Login <br />
+              <input id="_shib_idp_revokeConsent" type="checkbox" name="_shib_idp_revokeConsent" value="true">
+              Clear prior granting of permission for release of your information to this service.              </div><!-- /.form-element-wrapper -->
+
+
+            <div class="form-element-wrapper">
+              <button class="btn btn-lg btn-ku btn-block" type="submit" name="_eventId_proceed"
+                                                                        onClick="this.childNodes[0].nodeValue='Logging in, please wait...'"
+                                                                        >Login</button>
+            </div><!-- /.form-element-wrapper -->
+
+          </form>
+
+
+          <img src= "https&#x3a;&#x2f;&#x2f;www.k.kyoto-u.ac.jp&#x2f;img&#x2f;header_01.gif"
+                                                                        alt="kulasis">
+
+          <ul class="list-help">
+            <li class="list-help-item"><a href="http://www.iimc.kyoto-u.ac.jp/en/faq/general/general/#Q52523"><span class="item-marker">&rsaquo;</span> Forgot your password?</a></li>
+            <li class="list-help-item"><a href="http://www.iimc.kyoto-u.ac.jp/en/faq/cert/"><span class="item-marker">&rsaquo;</span> Need Help?</a></li>
+          </ul>
+        </div><!-- /.jumbotron -->
+      </div><!-- /.column one -->
+
+      <footer>
+        <div class="column one center-block">
+          <p class="text-center footer-text">The Institute for Information Management and Communication (IIMC) ICT support center</p>
+        </div><!-- /.column one -->
+      </footer>
+      <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?TpPCN~EZ-C4%3D" charset="utf-8"></script>
+    </div><!-- /.wrapper --> 
+
+  </body>
+</html>
+

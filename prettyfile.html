@@ -1,0 +1,5640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="1800;URL=/student/logout" http-equiv="Refresh"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/javascript" http-equiv="Content-Script-Type"/>
+  <link href="/css/behavior.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/layout.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/la_style.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/new_home/bootstrap_for_new_home.min.css" rel="stylesheet" type="text/css"/>
+  <script src="/js/prototype.js" type="text/javascript">
+  </script>
+  <script src="/js/jquery.js" type="text/javascript">
+  </script>
+  <script>
+   jQuery.noConflict();
+  </script>
+  <script src="/js/jquery_auto.js" type="text/javascript">
+  </script>
+  <script src="/js/authentication/authentication.js" type="text/javascript">
+  </script>
+  <title>
+   京都大学教務情報システム
+  </title>
+  <link href="/css/webfont.css" rel="stylesheet"/>
+  <style>
+   .css-submit-button {
+    display: inline-block;
+  }
+  input::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+  </style>
+  <script type="text/javascript">
+   jQuery(function() {
+    jQuery(".css-submit-button").click(function(e) {
+      jQuery(e.target).parents("form").submit();
+    });
+  });
+  </script>
+ </head>
+ <body onload="">
+  <div id="frame">
+   <div id="wrapper">
+    <div id="header">
+     <div class="header_left">
+      <img alt="TOPへ" id="id_img_22_0" src="/img/zk_logo_l.gif"/>
+     </div>
+     <div class="header_right">
+      <div class="logo">
+       <img alt="" id="id_img_22_1" src="/img/zk_logo_r.gif"/>
+      </div>
+      <div class="header_menu">
+       <ul class="header_menu_left">
+        <li>
+         <a href="/student/la/department_home/top" id="id_a_22_1">
+          <img alt="部局ホーム" class="Hover" id="id_img_22_3" src="/img/zk_tab_dep_home.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/notice/top" id="id_a_22_3">
+          <img alt="お知らせ" class="Hover" id="id_img_22_5" src="/img/zk_tab_information.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/syllabus/top" id="id_a_22_4">
+          <img alt="シラバス" id="id_img_22_6" src="/img/zk_tab_syllabus_on.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/entry/zenki" id="id_a_22_7">
+          <img alt="時間割(前期)" class="Hover" id="id_img_22_9" src="/img/zk_tab_timetable_zenki.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/account/top" id="id_a_22_11">
+          <img alt="登録情報" class="Hover" id="id_img_22_13" src="/img/zk_tab_setting.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/prelang/top" id="id_a_22_36">
+          <img alt="外国語予備登録" class="Hover" id="id_img_22_37" src="/img/zk_tab_prelang.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/timeslot/top" id="id_a_22_15">
+          <img alt="履修登録" class="Hover" id="id_img_22_17" src="/img/zk_tab_timeslot.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/tagakubu/top" id="id_a_22_15">
+          <img alt="他学部聴講" class="Hover" id="id_img_22_17" src="/img/zk_tab_timeslot_other.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/entrylimit/top" id="id_a_22_15">
+          <img alt="履修(人数)制限" class="Hover" id="id_img_22_17" src="/img/zk_tab_risyu_seigen.gif"/>
+         </a>
+        </li>
+       </ul>
+       <ul class="header_menu_right three_storied">
+        <li>
+         <a href="/student/logout" id="id_a_22_30">
+          <img alt="ログアウト" id="id_img_22_32" src="/img/zk_header_logout_s.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/top" id="id_a_22_31">
+          <img alt="" id="id_img_22_33" src="/img/zk_header_kulasis_home_o_s.gif"/>
+         </a>
+        </li>
+        <li>
+         <a href="/student/la/department_home/top" id="id_a_22_31">
+          <img alt="" src="/img/zk_header_dep_home_o_s.gif"/>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div id="wrapper">
+     <style>
+      .hide {
+  display: none;
+}
+     </style>
+     <script type="text/javascript">
+      &lt;!--    
+        jQuery(function() {
+        jQuery('H2.acordionHandle').click(function () {
+        var imgs = jQuery('img', this);
+        if (imgs){
+        var img = imgs[0];
+        }
+        if (jQuery(this).attr('class').match(/\bopen\b/)) {
+        jQuery(this).removeClass('open').next().slideUp();
+        if (img)
+        img.src = img.src.replace(/^(.+)_on(\.[a-z]+)$/, "$1$2");
+        } else {
+        jQuery(this).addClass('open').next().slideDown();
+        if (img)
+        img.src = img.src.replace(/^(.+)(\.[a-z]+)$/, "$1_on$2");
+        }
+        });
+        });
+        //--&gt;
+     </script>
+     <div class="menu">
+      <ul>
+       <li>
+        <ul class="links">
+         <li>
+          <a href="/student/la/top">
+           <img alt="KULASIS TOP" class="Hover" src="/img/zk_menu_kulasis_home.gif"/>
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <ul class="links">
+         <li>
+          <img alt="全学共通科目" src="/img/zk_menu_la_on.gif"/>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <h2 class="acordionHandle">
+         <img alt="学部" src="/img/zk_menu_accordion_faculty.gif"/>
+        </h2>
+        <ul class="links hide">
+         <li>
+          <a href="/student/u/let/syllabus/top">
+           <img alt="文学部" class="Hover" src="/img/zk_menu_let.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/ed/syllabus/top">
+           <img alt="教育学部" class="Hover" src="/img/zk_menu_edu.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/l/syllabus/top">
+           <img alt="法学部" class="Hover" src="/img/zk_menu_law.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/ec/syllabus/top">
+           <img alt="経済学部" class="Hover" src="/img/zk_menu_eco.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/s/syllabus/top">
+           <img alt="理学部" class="Hover" src="/img/zk_menu_sci.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/med/syllabus/top">
+           <img alt="医学部(医)" class="Hover" src="/img/zk_menu_med.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/medh/syllabus/top">
+           <img alt="医学部(人間)" class="Hover" src="/img/zk_menu_med_h.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/p/syllabus/top">
+           <img alt="薬学部" class="Hover" src="/img/zk_menu_pha.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/t/syllabus/top">
+           <img alt="工学部" class="Hover" src="/img/zk_menu_tech.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/a/syllabus/top">
+           <img alt="農学部" class="Hover" src="/img/zk_menu_agr.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/u/h/syllabus/top">
+           <img alt="総合人間学部" class="Hover" src="/img/zk_menu_hum.gif"/>
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <h2 class="acordionHandle ">
+         <img alt="大学院" src="/img/zk_menu_accordion_graduate.gif"/>
+        </h2>
+        <ul class="links hide">
+         <li>
+          <a href="/student/g/let/syllabus/top">
+           <img alt="文学研究科" class="Hover" src="/img/zk_menu_g_let.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/ed/syllabus/top">
+           <img alt="教育学研究科" class="Hover" src="/img/zk_menu_g_edu.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/lp/syllabus/top">
+           <img alt="法学研究科（法政理論専攻）" class="Hover" src="/img/zk_menu_g_law_p.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/ls/syllabus/top">
+           <img alt="法科大学院" class="Hover" src="/img/zk_menu_g_ls.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/ec/syllabus/top">
+           <img alt="経済学研究科" class="Hover" src="/img/zk_menu_g_eco.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/s/syllabus/top">
+           <img alt="理学研究科" class="Hover" src="/img/zk_menu_g_sci.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/med/syllabus/top">
+           <img alt="医学研究科" class="Hover" src="/img/zk_menu_g_med.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/medh/syllabus/top">
+           <img alt="医学研究科（人間健康科学系専攻）" class="Hover" src="/img/zk_menu_g_med_h.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/p/syllabus/top">
+           <img alt="薬学研究科" class="Hover" src="/img/zk_menu_g_pha.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/t/syllabus/top">
+           <img alt="工学研究科" class="Hover" src="/img/zk_menu_g_tech.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/a/syllabus/top">
+           <img alt="農学研究科" class="Hover" src="/img/zk_menu_g_agr.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/h/syllabus/top">
+           <img alt="人間・環境学研究科" class="Hover" src="/img/zk_menu_g_hum.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/ene/syllabus/top">
+           <img alt="エネルギー科学研究科" class="Hover" src="/img/zk_menu_g_ene.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/aa/syllabus/top">
+           <img alt="アジア・アフリカ地域研究研究科" class="Hover" src="/img/zk_menu_g_aa.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/i/syllabus/top">
+           <img alt="情報学研究科" class="Hover" src="/img/zk_menu_g_inf.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/bio/syllabus/top">
+           <img alt="生命科学研究科" class="Hover" src="/img/zk_menu_g_bio.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/ert/syllabus/top">
+           <img alt="地球環境学舎" class="Hover" src="/img/zk_menu_g_ert.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/gov/syllabus/top">
+           <img alt="公共政策大学院" class="Hover" src="/img/zk_menu_g_gov.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/man/syllabus/top">
+           <img alt="経営管理大学院" class="Hover" src="/img/zk_menu_g_man.gif"/>
+          </a>
+         </li>
+         <li>
+          <a href="/student/g/is/syllabus/top">
+           <img alt="総合生存学館" class="Hover" src="/img/zk_menu_g_is.gif"/>
+          </a>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="contents">
+      <!-- PandAへのリンクロゴをページ上部に表示 -->
+      <!-- 全共・全学 部局ホーム画面のみ -->
+      <div class="right" style="margin-top: 3px;">
+       <span class="link">
+        <a href="/student/la/syllabus/detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100&amp;display_lang=en">
+         English
+        </a>
+       </span>
+       |
+       <span class="link">
+        <a href="/student/la/syllabus/detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100&amp;display_lang=jp">
+         日本語
+        </a>
+       </span>
+       |
+       <span class="link">
+        <a href="/student/la/privacy">
+         プライバシー・ポリシー
+        </a>
+       </span>
+       |
+       <span class="link">
+        <a href="/student/la/user_guideline">
+         利用ガイドライン
+        </a>
+       </span>
+      </div>
+      <div class="timeout_message">
+       ※30分以上操作しない場合は自動的にログアウトします。
+      </div>
+      <!-- contents -->
+      <!-- title -->
+      <div class="title">
+       <img src="/img/department_title_la.gif"/>
+       <br/>
+       <img alt="" id="id_img_1374_0" src="/img/mark_01.gif"/>
+       <img alt="シラバス" id="id_img_1374_1" src="/img/title_syllabus.gif"/>
+      </div>
+      <!-- +++++++++++++++++++++ contents +++++++++++++++++++++ -->
+      <center>
+       <table border="0" cellpadding="3" cellspacing="0">
+        <tbody>
+         <tr class="">
+          <td nowrap="">
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=99">
+            前の10件
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=95">
+            95
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=96">
+            96
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=97">
+            97
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=98">
+            98
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=99">
+            99
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" style="color: red">
+            100
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=101">
+            101
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=102">
+            102
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=103">
+            103
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=104">
+            104
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=105">
+            105
+           </a>
+          </td>
+          <td nowrap="">
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=101" id="id_a_1261_2">
+            次の10件
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </center>
+      <center>
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="1">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#0" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#2" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：地下を工学的にみる
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Engineering eyes on underground phenomena
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               工学研究科
+              </td>
+              <td>
+               教授
+              </td>
+              <td>
+               榊　利博
+              </td>
+             </tr>
+             <tr>
+              <td>
+               工学研究科
+              </td>
+              <td>
+               准教授
+              </td>
+              <td>
+               塚田　和彦
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                8(8)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                １回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                4共25
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                地盤 / 地下水 / 地下調査 / 地下利用 / モデル実験
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             人間が生活を営む地上は地球規模でみると卵の殻のような薄皮である。トンネルを通ったり地下街に行くことなどを除いては日常生活で地面より下に触れる機会は少ない。地盤や地下は工学的な目でみるとこのような見え方がある、ということを様々な例を通して理解する。次に地下を知るための方法、地下利用の多岐にわたる形態などについての学習を通して、地下の持つ工学的な利用価値などに関する知識を習得する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             ● 地下が人類の生活において様々な形で利用され我々が受ける恩恵を知ることで、その重要性を理解する。
+             <br/>
+             ● 地盤を構成する要素である土、岩、水は地下でどのような状態でどのような挙動をするのかを理解する。
+             <br/>
+             ● 地下を知るための方法について理解し、我々はどの程度知ることができるのかその有効性と限界を理解する。
+             <br/>
+             ● 物理現象を簡単なモデル実験に置き換えて工学的な目で理解する。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             基本的に以下の計画に従って講義とディスカッションを進める。討議の進み具合によってはテーマの順序やテーマの回数を変えることもある。
+             <br/>
+             (1) 地盤の構成要素【3回】：初回はガイダンスにてこのセミナーの目標を説明。その後は地盤を構成する土、岩、水などの性質や挙動などについて講義し、ディスカッションする。
+             <br/>
+             (2) 地盤を知る【3回】：見えない地盤を知るための方法、応力や地震などについて講義、ディスカッションする。
+             <br/>
+             (3) 地下環境と利用【2回】：地下環境の汚れや地下の利用方法について講義、ディスカッションする。
+             <br/>
+             (4) 基礎実験【6回】：学習した現象のいくつかを基礎実験により再現し討議する。
+             <br/>
+             (5) フィードバック方法は別途連絡する。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             出席および取り組み姿勢（30点），プレゼン（40点），および期末レポート（30点）により評価する。プレゼンとレポートについては到達目標の達成度に基づき評価する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             必要に応じて紹介する
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             学習内容に関連するテーマの範囲内で班に分かれて自分たちの興味ある事項について簡単なスライドにまとめる。次回の授業の一部でこれを全員で討議する。学期末に一番興味を持ったテーマについて工学的な目から自分流に調査をしレポートを提出する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             ● 計測機器を用いた実習を行うため，学生教育研究災害傷害保険等の傷害保険に加入して下さい。
+             <br/>
+             ● 課題発表にはPowerPointを使いますが，授業の中で使えるように指導します。
+             <br/>
+             ● オフィスアワーを質問に活用できますが，担当教員は桂キャンパスにいますので，● 理解できない点は積極的に授業中に質問して下さい。
+             <br/>
+             ● 受講定員を超える受講申込があった場合は無作為に抽選を行います。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="2">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#1" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#3" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：先端的染色体操作技術で探るコケ植物の発生
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Exploring bryophyte development by advanced chromosome manipulation technique
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               生命科学研究科
+              </td>
+              <td>
+               准教授
+              </td>
+              <td>
+               西浜　竜一
+              </td>
+             </tr>
+             <tr>
+              <td>
+               生命科学研究科
+              </td>
+              <td>
+               助教
+              </td>
+              <td>
+               山岡　尚平
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                6(6)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                １回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                農学生命科学研究棟804(北部構内)
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                生活環 / 遺伝子工学 / 幹細胞 / 細胞系譜 / 進化
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             自然の中で、花壇で、あるいは自宅で、植物を観賞する機会は少なからずあるでしょう。よく目に留まるのは花の咲く植物（分類学的には被子植物と言います）だと思いますが、それらの隙間でたくましく生きている植物も地球上には数多く存在します。その一つがコケ植物です。コケ植物は現存する陸生の植物の中では最も古くに被子植物との共通の祖先から誕生しました。しかし被子植物とは異なる点が多くあります。まず主要な植物体を構成する世代は、染色体を1セットしかもたない半数体（n）世代です。また、花や根もなければ、水分や養分を通す維管束もありません。このILASセミナーでは、コケ植物の中でも苔類に分類されるゼニゴケの一生を通して、その構造を顕微鏡を用いて観察し、祖先的な陸上植物がどのような発生戦略を持っていたのかを議論します。
+             <br/>
+             また動物と同様に植物も幹細胞を持っていて、個体全体あるいは大部分が幹細胞が産出した細胞で構築されています。植物はさらに、個体内で幹細胞を新たに生み出したり、増やしたりすることができます。しかし、この仕組みはまだよくわかっていません。ゼニゴケは近年の技術革新により様々な遺伝子工学技術が利用できるようになりました。このセミナーのもう一つの目的として、最新の染色体操作技術を用いてある細胞を標識し、それがその後個体のどの部分を構成するに至ったかを解析することで、ゼニゴケの発生パターンや幹細胞の増幅・形成の様式を理解します。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             植物の基本的な発生様式を理解し、種々の発生パターンを説明できる。
+             <br/>
+             遺伝子の構造と発現について説明ができる。
+             <br/>
+             染色体操作技術、顕微鏡観察の手法を習得する。
+             <br/>
+             実験結果から現象を説明する仮説を立てることができる。
+             <br/>
+             レポートおよびプレゼンテーションに対して、自主的に取り組む能力を養う。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             第１回　イントロダクション
+             <br/>
+             セミナー全体の流れと進め方、準備と発表の方法を周知する。植物の発生様式を説明する。
+             <br/>
+             第２ー１３回　ゼニゴケの発生様式の観察と染色体操作技術を用いた細胞系譜の解析
+             <br/>
+             ゼニゴケの発生を生活環を追って観察する。染色体操作技術を用いて細胞をラベルし、その後３週間に渡ってラベルされた細胞の領域（セクター）を観察し、記録する。これを何度か繰り返して、セクター集を作る。
+             <br/>
+             第１４回　結果のまとめ
+             <br/>
+             得られたセクター集をもとにゼニゴケの発生様式を議論する。
+             <br/>
+             第１５回　プレゼンテーション
+             <br/>
+             各自の結果、結論、考察をPowerPoint等を利用して発表し、質疑応答を行う。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             理系、文系は問いません。高校で生物を履修していなくても問題ありません。ただし、植物や生物に興味がある人に限定します。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             平常点（50点）、レポート（30点）、およびプレゼンテーション（20点）により評価します。
+             <br/>
+             平常点は、出席状況（3回以上授業を欠席した場合には単位を認めません）とセミナーでの積極的な発言で評価します。
+             <br/>
+             レポートは期間中に何度か課しますので、その提出状況と内容で評価します。
+             <br/>
+             プレゼンテーションは最終回に行います。得られた結果をもとに、どのように考えたかを重視します。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            岩槻邦男。馬渡峻輔『植物の多様性と系統』(裳華房) ISBN:4-7853-5825-4 (20年以上前の本ですが、基本知識満載です。)
+            <br/>
+            塚谷裕一、荒木崇『植物の科学』(放送大学教育振興会) ISBN:978-4-595-31580-0 (現代植物科学の基礎をやさしく解説している。)
+            <br/>
+            ALBERTS/JOHNSON/LEWIS/MORGAN/RAFF/ROBERTS/WALTER『細胞の分子生物学 第6版』(ニュートンプレス) ISBN:978-4315520620 (古い版でも十分です。)
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             以下の用語や概念について予め調べておくことで、授業内容をより深く理解できるでしょう。
+             <br/>
+             ＜陸上植物、植物の世代交代、プロモーター、ターミネーター、部位特異的組換え、幹細胞、細胞系譜、クローナル解析＞
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             本セミナーでは顕微鏡観察を行うため、受講を6人以内に制限します。
+             <br/>
+             授業中、わからないことや疑問に思ったことについては、積極的な質問を期待します。
+             <br/>
+             この実験では結果を主にスケッチで記録します。色鉛筆や色ペンを用意してください。
+             <br/>
+             なお、実験を行うため、受講生は学生教育研究災害傷害保険に必ず加入してください。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="3">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#2" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#4" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：エネルギーと地盤工学
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Energy and Geotechnics
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               工学研究科
+              </td>
+              <td>
+               教授
+              </td>
+              <td>
+               岸田　潔
+              </td>
+             </tr>
+             <tr>
+              <td>
+               経営管理大学院
+              </td>
+              <td>
+               准教授
+              </td>
+              <td>
+               木元　小百合
+              </td>
+             </tr>
+             <tr>
+              <td>
+               工学研究科
+              </td>
+              <td>
+               助教
+              </td>
+              <td>
+               澤村　康生
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                6(6)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                １回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                教育院棟演習室24
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                地盤工学 / 岩盤工学 / エネルギー工学 / エネルギー政策 / 環境・防災
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             国民生活や経済活動の基盤であるエネルギーの大半を海外に依存している我が国にとって，エネルギーの安定供給は普遍的な重要課題である．東京電力福島第一原子力発電所事故をはじめとする自然災害に対して安定供給の確保，地球温暖化問題をはじめとする環境問題に配慮したエネルギー供給など，時代とともに変遷するエネルギー政策に対して，地盤工学・岩盤工学がどのような役割を果たしてきたのか，果たしていくのか，についてセミナー，グループワーク形式で進める．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             課題に対して，個人またはグループでレポートを作成し，そのプレゼンを通じ個人またはグループごとにディスカッションを行う．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             （１）エネルギー政策の変遷と最近の取組【３回】
+             <br/>
+             時代背景とともに変遷してきたエネルギー政策について説明し，最近の取組を紹介する．エネルギー白書，エネルギー基本計画の変遷についてグループでとりまとめを行い，その内容の発表・討論を行う．
+             <br/>
+             <br/>
+             （２）エネルギー施設の安全性確保と地盤工学【４回】
+             <br/>
+             エネルギー施設を設計施工するうえで，防災対策は必要不可欠である．ここでは，原子力発電所施設の地盤工学分野にかかわる耐震設計の現状を説明し，液状化実験のデモなどを通じて，地盤構造物の耐震設計の現状について議論を行う．「地盤の液状化対策工について，その方法と対策原理」についてグループでレポートを作成，その内容の発表・討論を行う．
+             <br/>
+             <br/>
+             （３）水力開発と地盤工学【４回】
+             <br/>
+             地盤・岩盤工学は，水力開発とともに発展してきた．現在では，水力開発は，電源供給だけでなく防災・環境に配慮したものでなければならない．ここでは，水力開発とそれにかかわる地盤・岩盤工学の技術の変遷を紹介し，最近のプロジェクトの紹介を行う．
+             <br/>
+             <br/>
+             （４）エネルギー・環境・地盤工学【３～４回】
+             <br/>
+             地球温暖化問題，メタンハイドレートを含む非在来型資源の開発と地盤工学の果たす役割について解説を行う．
+             <br/>
+             <br/>
+             （６） 期末試験／学習到達度の評価【１回】
+             <br/>
+             レポートとプレゼンで学習到達度の評価を行う．
+             <br/>
+             <br/>
+             （７）フィードバック【１回】
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             平常点，レポートおよび発表・討論等で総合的に到達目標の達成度を評価する．平常点(20%)，レポート作成(50%)，発表・討論の評価(30%)とする．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             授業中に紹介する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             レポート課題への取り組みは，個人で実施するものとグループで実施するものを課す．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             オフィスアワーについては，最初の講義で説明する．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="4">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#3" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#5" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：量子コンピュータを動かしてみよう
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Let's play with a quantum computer
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               理学研究科
+              </td>
+              <td>
+               特定准教授
+              </td>
+              <td>
+               藤井　啓祐
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                20(10)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                理学研究科6号館202講義室(北部構内)
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                量子コンピュータ / 量子力学 / Python / 計算機 / 量子情報
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             量子コンピュータとは物理の最も基本的な枠組みである量子力学に基づいて計算するコンピュータのことである。最近では、Google、IBM、Intel、MicrosoftといったIT巨大企業たちが量子コンピュータの実現にむけて基礎研究を進めている。なかでも、IBMはネット上に誰でも使える小規模の量子コンピュータを公開している。本ゼミでは、量子コンピュータの仕組みの基礎を勉強し、実際に量子コンピュータをネット経由で動かしてみて、量子的な経験をつむことを目的とする。量子力学（物理）に興味がある学生、計算機（情報）が得意な学生が、それぞれの垣根を越えて物理と情報にまたがった学際分野である量子情報科学、量子コンピュータについて実際に手を動かして学ぶことを目指す。
+             <br/>
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             ・量子力学の基礎的なルールを理解する。
+             <br/>
+             ・量子コンピュータの基本的な仕組みを理解する。
+             <br/>
+             ・インターネット経由で実際の量子コンピュータを動かす。
+             <br/>
+             ・自分が学んだことや得意なことを人にわかるように説明するスキルを身につける。
+             <br/>
+             ・[発展課題案]量子コンピュータが実際に量子力学に従って動いていることを検証する。
+             <br/>
+             ・[発展課題案]簡単な量子アルゴリズムの仕組みを理解する。
+             <br/>
+             ・[発展課題案]量子コンピュータを従来のコンピュータでシミュレーションしてみる（CPU, GPUの比較や量子ビット数に対しての計算時間のスケーリングなど）。
+             <br/>
+             ・[発展課題案]Python API経由で量子コンピュータを動かす。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             ゼミの最初に、簡単な量子力学の導入と量子コンピュータの歴史や仕組みの基礎を説明する。あとは実際に量子コンピュータをウェブブラウザ上で動かしながら量子力学の不思議を経験してもらう。また、参加者の長所やモチベーションに合わせて、従来のPC（CPUやGPU）を用いた量子コンピュータのシミュレーションに挑戦したり、Python API経由でIBMの量子コンピュータを実行したりすることを試みる。一通り環境が整った後、数人で１つチームを作ってもらい、特定のテーマを決めて各チームで課題を進めてもらうことを予定している。最後の授業で、各チームから課題の発表してもう。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             「量子力学にすごく興味がある」、「量子力学はしらないがプログラミングが好き」、「とにかく量子コンピュータに関して知りたい！」、「量子コンピュータのベンチャー企業を起業したい」といった方の受講をおすすめする。特に、Pythonをさわったことがあったり、c言語などを用いたプログラミング経験があると、その能力がゼミで最大限に活かされるであろう。各自のノートPCが持参できると、よりゼミの課題や量子コンピュータを楽しめることは間違いないので推奨する。また受講者参加型のゼミを予定しているので、積極的に課題に参加したくない人やとりあえず単位を取りたいだけの人は決して受講するべきではない。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             成績は、
+             <br/>
+             ・出席を含め課題への取り組みの姿勢 50%
+             <br/>
+             ・チームで取り組んだ課題成果 30%
+             <br/>
+             ・最後の授業で行う各チームごとの発表 20%
+             <br/>
+             の割合で合計100点満点として評価する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             授業中に紹介する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             必須ではないが、Pythonが使えるようになっているとスムーズに課題が進む。
+             <br/>
+             適当にインターネットで検索して使ってみよう。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="5">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#4" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#6" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：古代宇宙観と天文学
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Cosmology and astronomy in the ancient world
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               白眉センター
+              </td>
+              <td>
+               特定助教
+              </td>
+              <td>
+               Werner，Marcus Christian
+              </td>
+             </tr>
+             <tr>
+              <td>
+               白眉センター
+              </td>
+              <td>
+               特定准教授
+              </td>
+              <td>
+               MAK, Bill
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                10(7)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                共西04
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                英語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                Astronomy / History
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             The sky, the structure of the universe, and our place within it, have drawn scholarly interest throughout history. In this course, we shall study aspects of the astronomical and cosmological traditions of ancient world cultures, with a particular focus on textual sources and transmission of ideas between cultures. Each seminar will consist of an introductory lecture by one of the instructors and a more interactive element, in which students will read and discuss original texts in English translation. Some simple computational exercises, to consolidate the astronomical understanding, will also be performed.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             Students will gain a broad overview of the major astronomical traditions of the ancient world (until about 1200), as well as a deep understanding based on their original textual sources. In this process, students will learn basic astronomy and will be encouraged to reflect on cross-cultural transmission of concepts and also on methodological issues in science and history. The course will also serve to improve students' skills in English conversation and comprehension of texts.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             Course schedule by week:
+             <br/>
+             <br/>
+             1. Astronomy: Celestial sphere, planetary orbits (Marcus Werner)
+             <br/>
+             2. Egypt: Pyramid texts, diagonal star tables, decans (Marcus Werner)
+             <br/>
+             3. Mesopotamia: MUL.APIN, planetary theory, transmission to Greece (Marcus Werner)
+             <br/>
+             4. Hellenistic Period I: Aratos, Hipparchos, Hygnius (Marcus Werner)
+             <br/>
+             5. Hellenistic Period II: Ptolemy - astronomy and astrology (Bill Mak)
+             <br/>
+             6. Europe: De Cursu Stellarum, Carolingian Renaissance, Toledo School (Marcus Werner)
+             <br/>
+             7. India I: Vedic astral science, Greco-Babylonian transmission to India, Yavanajataka (Bill Mak)
+             <br/>
+             8. India II: Aryabhata and Varahamihira (Bill Mak)
+             <br/>
+             9. India III: Buddhist cosmology (Bill Mak)
+             <br/>
+             10. Middle East and Central Asia: Transmission on the Silk Road (Bill Mak)
+             <br/>
+             11. East Asia I: Early astronomy in China, Three Schools, Tianguanshu (Bill Mak)
+             <br/>
+             12. East Asia II: Reception in Japan, Kitora star map, Meigetsuki (Bill Mak)
+             <br/>
+             13. Mesoamerica: Calendar and astral sciences of the Maya (Marcus Werner)
+             <br/>
+             14. Outlook: Renaissance and the legacy of ancient astronomy (Marcus Werner)
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             Interest in astronomy and history. Prior academic study of these subjects, though beneficial, is not necessary.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             There is no final examination. The evaluation will be based upon students' attendance and assignments, which will be set during class and discussed in the Feedback Session. The final grade (up to 100 points) will be determined by class attendance and perticipation (5 points per class x 14 sessions) and one assignment (30 points) per student.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             授業中に指示する
+            </span>
+            <br/>
+            <span class=" h120">
+             Relevant literature will be announced, and partially provided in copy, during class.
+             <br/>
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             授業中に紹介する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             Students will be expected to read and prepare texts in advance, as assigned during class.
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             Office hours will be announced during class.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="6">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#5" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#7" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：安定化制御をやさしい数学で理解する
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :An Introduction to Stabilization Control
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               情報学研究科
+              </td>
+              <td>
+               教授
+              </td>
+              <td>
+               太田　快人
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                15(15)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                １回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                1共04
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                制御理論 / 安定化 / 安定化制御
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             ロケットや航空機などに所望の動きをさせる、構造物の振動を抑制するなど、制御対象に望みの挙動をさせることを制御理論は目指している。電力や水道システム、交通網システムなど、スマート社会の実現にとっても有用とされる制御理論の中でも基本的な安定性や安定化について、その考え方を学ぶ。
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             制御システムを安定化させることの意義、安定性や安定化に関する基礎的な結果を、高校までの数学を用いて理解する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             １．数列を用いて安定性を考える（3回）
+             <br/>
+             ２．制御システムの教材を通して安定化を体験する（4回）
+             <br/>
+             ３．エネルギーと安定性の関係を考える（3回）
+             <br/>
+             ４．安定化制御の仕組みを考える（4回）
+             <br/>
+             ５．学習到達度の評価（1回）
+             <br/>
+             ６．フィードバック（1回）
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             高校までの数学の知識を用いる。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             セミナーでの発表とレポートで評価する。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             プリントを配布する。
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            大須賀公一，足立修一『システム制御へのアプローチ』(コロナ社) ISBN: 978-4339033014
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             前回授業中に指示のあった問題についてしっかり予習して次の授業に臨むこと。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             質問等ある場合は、担当者にメールで質問時間を問い合わせること。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="7">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#6" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#8" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILASセミナー ：「新しい石油」としてのパーソナルデータとその市場
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar :Personal Data as "New Oil" and its Market
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               情報学研究科
+              </td>
+              <td>
+               教授
+              </td>
+              <td>
+               吉川　正俊
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                7(7)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                医学部構内先端科学研究棟502室(医・薬・病院構内)
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                日本語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                パーソナルデータ市場
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             購買履歴，移動経路，心拍などの生体情報など，毎日の生活で発生するパーソナルデータは，"New Oil"と呼ばれ，その経済的価値が注目されている．
+             <br/>
+             このようなパーソナルデータに対し匿名化などのプライバシ保護処理を施した上で，それを売買する市場を実現するためには，どのような問題点があり，それを克服するためにどのようなアプローチがあり得るかについて考察する．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             パーソナルデータマーケットの可能性と問題点を理解し，プライバシ保護を法律，経済，情報技術など多面的に考える態度を身につける．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             （１）イントロダクション【１回】：
+             <br/>
+             セミナーの進め方，パーソナルデータマーケットの概要
+             <br/>
+             <br/>
+             （２）パーソナルデータマーケットの基礎【３回】：
+             <br/>
+             現状：IT巨人企業による独占
+             <br/>
+             OECD，民間，政府の期待
+             <br/>
+             データは所有できるのか？　ステークホルダーは誰か？
+             <br/>
+             各国の法制度
+             <br/>
+             <br/>
+             （３）プライバシ保護技術【３回】：
+             <br/>
+             プライバシ保護のための情報技術
+             <br/>
+             <br/>
+             （４）パーソナルデータマーケットの発展【2回】：
+             <br/>
+             <br/>
+             （５）各論【5回】:
+             <br/>
+             新しいパーソナルデータマーケットのサービスの提案を目的として、各人が調査・考察し、その結果の発表及び討議を行う。
+             <br/>
+             <br/>
+             (6)フィードバック【1回】:
+             <br/>
+             <br/>
+             <br/>
+             各項目には、受講者の理解の程度を確認しながら、【　】で指示した回数を充てます。各項目・小項目の講義の順序は固定したものではなく、担当者の講義方針と受講者の背景や理解の状況に応じて、講義担当者が適切に決めます。講義の進め方については適宜、指示をして、受講者が予習をできるように十分に配慮します。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             セミナーでの発表、討論への積極的な参加、レポートの内容を総合的に評価します。詳しくは授業中に説明します。
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             授業中に紹介する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             授業時に指示される課題について取り組んで授業に参加してください．
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="8">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#7" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#9" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILAS Seminar-E2 :Introduction to Environmentally Friendly Chemistry（環境に優しい化学の誘い）
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar-E2  :Introduction to Environmentally Friendly Chemistry
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               工学研究科
+              </td>
+              <td>
+               講師
+              </td>
+              <td>
+               LANDENBERGER，Kira Beth
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                25(15)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                1共26
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                英語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                solvent-free / biocatalysis / toxicity reduction / recycling / sustainable materials
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr id="movie_34336">
+          <td class="lesson_plan_sell" colspan="2" style="padding: 0px">
+           <div class="youtube-row youtube-row-34336">
+            動 画
+            <img class="youtube-row-arrow" src="/img/arrow1.png"/>
+           </div>
+           <div class="youtube-movie" data-movie-id="3zYZ4C9PNfw" style="display: none">
+            <iframe allowfullscreen="" frameborder="0" height="375" scrolling="no" src="/html/browser/dummy.html" width="500">
+            </iframe>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             This course introduces the concept of environmentally friendly chemistry both in the chemistry lab as well as in daily life in the world around us. The course will consider current practices in chemistry, advances in environmentally friendly chemistry and areas for future change. This course aims to familiarize students with practical principles for environmentally friendly chemistry that can be applied in future research or work.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             Students will learn about the basics of environmentally friendly chemistry and how to apply it. This includes a discussion of toxic materials and how to reduce their use, the use of other solvents or reduction of current solvents, the effective use of biocatalysts, as well as methods to make the chemistry cleaner and safer in the production of everything from food to paper to household furniture. To engage in the course material more fully, students will prepare a semester project as well as completing occasional tasks outside of class.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             Introduction to Environmentally Friendly Chemistry
+             <br/>
+             The Chlorine Controversy (2 Seminars)
+             <br/>
+             Toxic Heavy Metal Ions
+             <br/>
+             Solid Catalyst and Reagents for Ease of Workup
+             <br/>
+             Research and Presentations Methods
+             <br/>
+             Chemical Separations
+             <br/>
+             Working Without Organic Solvents
+             <br/>
+             Biocatalysis and Biodiversity
+             <br/>
+             Stereochemistry
+             <br/>
+             Agrochemicals
+             <br/>
+             Chemistry of Longer Wear
+             <br/>
+             Chemistry of Recycling
+             <br/>
+             Materials for a Sustainable Economy
+             <br/>
+             Final Presentations
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             Class participation and attendance (30%), homework (25%), semester presentation (45%)
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             使用しない
+            </span>
+            <br/>
+            <span class=" h120">
+             Handouts will provided as needed.
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            Albert Matlack『Introduction to Green Chemistry, Second Edition』(CRC Press) ISBN:9781420078114 (Recommended but not required.)
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             Students will be asked to prepare a short oral presentation for the end of the semester. To engage more fully with the class material throughout the semester, students will also occasionally be asked to complete homework.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="9">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#8" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#10" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILAS Seminar-E2 :Frontiers in Theoretical Physics I （理論物理学最前線 I ）
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar-E2  :Frontiers in Theoretical Physics I
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               基礎物理学研究所
+              </td>
+              <td>
+               准教授
+              </td>
+              <td>
+               Antonio De Felice(ｱﾝﾄﾆｵ ﾃﾞ ﾌｪﾘｰﾁｪ)
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                16(8)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                基礎物理学研究所湯川記念館3階305号室(北部構内)
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                英語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                Theoretical Physics / 理論物理学 / modern physics / 現代物理学
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr id="movie_33611">
+          <td class="lesson_plan_sell" colspan="2" style="padding: 0px">
+           <div class="youtube-row youtube-row-33611">
+            動 画
+            <img class="youtube-row-arrow" src="/img/arrow1.png"/>
+           </div>
+           <div class="youtube-movie" data-movie-id="Ft3s-OHpDv0" style="display: none">
+            <iframe allowfullscreen="" frameborder="0" height="375" scrolling="no" src="/html/browser/dummy.html" width="500">
+            </iframe>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             This will be in the form of a small class (around 7 students). The purpose is to learning interactively various up-to-date topics in theoretical physics. Topics will be taken from journals like Physics Today, Physics World, Nature etc..  The topics taken in this course are different from those in the course "Frontiers in Theoretical Physics Ⅱ".
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             The students will be able to read an article from some journal and enucleate the main message from it.
+             <br/>
+             <br/>
+             The student will closely interact with professor and other students, so that ideas/comments can be exchanged.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             1. Each of us would read in turn a paper and report her/his impressions to the other people.
+             <br/>
+             2. The paper will be freely chosen consistently with field of theoretical physics.
+             <br/>
+             3. In case the paper requires more work, analysis, the same paper can be discussed in groups.
+             <br/>
+             4. As for the paper, the student must be able to get the key-message and show to the others why the paper might (or might not) be of inportance in theoretical physics.
+             <br/>
+             5. Share comments, and toss out possible new ideas to expand the idea of the original paper.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             Discussion in class.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             授業中に指示する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+             授業中に紹介する
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             The students will be given a paper to read a week before class, and, in turn, they will present and discuss it with other students.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+       <!-- navigation -->
+       <a id="id_a_1374_0" name="10">
+       </a>
+       <table border="0" cellpadding="0" cellspacing="0" width="496">
+        <tbody>
+         <tr>
+          <td>
+           <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_1">
+            <img alt="検索結果に戻る" border="0" id="id_img_1374_2" src="/img/button_mini_back_search.gif"/>
+           </a>
+          </td>
+          <td align="right">
+           <a href="#9" id="id_a_1374_2">
+            <img alt="前へ" border="0" height="22" id="id_img_1374_3" src="/img/button_mini_previous.gif" width="55"/>
+           </a>
+           <a href="#11" id="id_a_1374_3">
+            <img alt="次へ" border="0" height="22" id="id_img_1374_4" src="/img/button_mini_next.gif" width="53"/>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <!--/navigation -->
+       <style>
+        td.lesson_plan_sell{
+  padding: 5px;
+  }
+  div.lesson_plan_subheading {
+  margin-bottom: 3px;
+  }
+  .youtube-row {
+    padding: 5px;
+    background: url("data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAgMAAADUn3btAAAACVBMVEV9uNJxsM1lqMhSI4c%2FAAAADklEQVQIHWOcyejCCMQAB64Bv0s%2BhaAAAAAASUVORK5CYII%3D");
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  .youtube-row-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .youtube-row:hover {
+    cursor: pointer;
+  }
+  .youtube-movie {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+       </style>
+       <script type="text/javascript">
+        jQuery(function() {
+    if (!window.syllabusMovieInit) {
+      jQuery(".youtube-row").click(function() {
+        var $this = jQuery(this);
+        var $accordion = $this.next(".youtube-movie");
+        if ($accordion.css("display") == "none") {
+          $this.css("border-bottom", "2px solid #9DA0B4");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow2.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace("/api/util/syllabus_movie?code=" + $accordion.attr("data-movie-id"));
+          $accordion.slideDown(300);
+        } else {
+          $this.css("border-bottom", "");
+          $this.find(".youtube-row-arrow").attr("src", "/img/arrow1.png");
+          $accordion.find("iframe")[0].contentDocument.location.replace('/html/browser/dummy.html');
+          $accordion.slideUp(300);
+        }
+      });
+      if (/^#movie_([0-9]+)$/.test(location.hash)) {
+        var lectureNo = RegExp.$1;
+        jQuery(".youtube-row-" + lectureNo).click();
+      }
+      window.syllabusMovieInit = true;
+    }
+  });
+       </script>
+       <img alt="" height="7" id="id_img_1373_0" src="/img/0.gif" width="1"/>
+       <br/>
+       <!-- syllabus -->
+       <div style="width: 500px; text-align: left; margin-top: 5px; margin-bottom: 5px;">
+        授業の進捗状況や受講生の習熟度などによって「授業計画と内容」，「成績評価の方法」が変更になる場合があります。
+       </div>
+       <table border="1" cellpadding="2" cellspacing="0" class="lesson_plan_sell" style="border-color:#9DA0B4;" width="520">
+        <tbody>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_1" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td class="lesson_plan_sell" width="280">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr>
+              <td>
+               <img alt="" height="3" id="id_img_1373_2" src="/img/0.gif" width="1"/>
+              </td>
+             </tr>
+             <tr style="vertical-align: top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (科目名)
+               </span>
+              </td>
+              <td width="225">
+               <span class="x100">
+                <b>
+                 ILAS Seminar-E2 :First Step to Qualitative Research Methods - Field Surveys and Data Analysis（質的研究へのはじめの一歩 - フィールド調査とデータ分析）
+                 <br/>
+                </b>
+               </span>
+              </td>
+             </tr>
+             <tr valign="top">
+              <td nowrap="" width="55">
+               <span class="lesson_plan_subheading">
+                (英 訳)
+               </span>
+              </td>
+              <td>
+               ILAS Seminar-E2  :First Step to Qualitative Research Methods - Field Surveys and Data Analysis
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+          <td class="lesson_plan_sell">
+           <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tbody>
+             <tr>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (所属部局)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (職 名)
+               </span>
+              </td>
+              <td nowrap="">
+               <span class="lesson_plan_subheading">
+                (氏 名)
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               防災研究所
+              </td>
+              <td>
+               准教授
+              </td>
+              <td>
+               SAMADDAR，Subhajyoti
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="30">
+               <span class="lesson_plan_subheading">
+                (群)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                少人数
+              群
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (単位数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2単位
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (週コマ数)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                1コマ
+               </span>
+              </td>
+              <td class="top" nowrap="" width="63">
+               <span class="lesson_plan_subheading">
+                (授業形態)
+               </span>
+              </td>
+              <td width="140">
+               <span class="">
+                ゼミナール
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (開講年度・開講期)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                2018・前期
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                受講定員
+                <br/>
+                (1回生定員)
+               </span>
+              </td>
+              <td width="50">
+               <span class="">
+                25(15)人
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (配当学年)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                主として１回生
+               </span>
+              </td>
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (対象学生)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                全学向
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (曜時限)
+               </span>
+              </td>
+              <td width="80">
+               <span class="">
+                水5
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="48">
+               <span class="lesson_plan_subheading">
+                (教室)
+               </span>
+              </td>
+              <td width="160">
+               <span class="">
+                教育院棟演習室21
+                <br/>
+               </span>
+              </td>
+              <td class="top" nowrap="" width="50">
+               <span class="lesson_plan_subheading">
+                (使用言語)
+               </span>
+              </td>
+              <td width="90">
+               <span class="">
+                英語
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray lowerGray" colspan="2">
+           <table border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+             <tr valign="top">
+              <td class="top" nowrap="" width="64">
+               <span class="lesson_plan_subheading">
+                (キーワード)
+               </span>
+              </td>
+              <td>
+               <span class="">
+                Research Methodology / Qualitative research / Survey tools and techniques
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </td>
+         </tr>
+         <tr id="movie_33828">
+          <td class="lesson_plan_sell" colspan="2" style="padding: 0px">
+           <div class="youtube-row youtube-row-33828">
+            動 画
+            <img class="youtube-row-arrow" src="/img/arrow1.png"/>
+           </div>
+           <div class="youtube-movie" data-movie-id="25dtjaRNnGA" style="display: none">
+            <iframe allowfullscreen="" frameborder="0" height="375" scrolling="no" src="/html/browser/dummy.html" width="500">
+            </iframe>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業の概要・目的)
+            </div>
+            <div>
+             This course will offer to learn a basic practical knowledge on qualitative research methods by conducting practical exercises, field surveys and analyzing field data. Emphasis will be placed on equipping students to gain the practical skills necessary to conduct a small field work project using action-oriented methods. Some of the methods taught will include qualitative research design, participant observation, interviews, focus groups and collaborative narrative inquiry.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (到達目標)
+            </div>
+            <div>
+             To conduct some practical exercises and field surveys to get a basic idea on qualitative research methods.
+             <br/>
+             To study and work together to understand how qualitative data can be analyzed and used for empirical research study.
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class="h120">
+            <div class="lesson_plan_subheading">
+             (授業計画と内容)
+            </div>
+            <div>
+             1. Introduction to Qualitative Research (Week 1)
+             <br/>
+             - Fundamentals of qualitative research
+             <br/>
+             -  The significance of qualities research
+             <br/>
+             -  Difference between qualitative and quantitative research methods.
+             <br/>
+             2. Major Qualitative Research methods and approaches   (Week 2)
+             <br/>
+             - Phenomenology; Grounded Theory; Ethnography.
+             <br/>
+             <br/>
+             3. Field Works and data collection (Week 3 to 9)
+             <br/>
+             -  Sampling ; Case-study; Observation; Photography; Content Analysis ; Group Discussion;    Interview
+             <br/>
+             <br/>
+             4. Data Analysis and Interpretation (Week 10 to 14)
+             <br/>
+             - Coding procedures; Case Analysis ; Cross-Case comparison
+             <br/>
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (履修要件)
+            </div>
+            <div>
+             特になし
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (成績評価の方法・観点及び達成度)
+            </div>
+            <div>
+             Evaluation will be based on active participation (10 points), Assignment (40 Points) and final presentation (50 points). Assignments  and report presentations will be assessed on the basis of achievement level for course goals
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell lowerGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (教科書)
+            </span>
+           </div>
+           <div>
+            <!-- <i> -->
+            <span class=" h120">
+             Handouts will be distributed by the instructor if necessary.
+            </span>
+            <!-- </i> -->
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell upperGray" colspan="2">
+           <div>
+            <span class="lesson_plan_subheading">
+             (参考書等)
+            </span>
+           </div>
+           <div>
+            <span class=" h120">
+            </span>
+            <br/>
+            <span class=" h120">
+            </span>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (授業外学習（予習・復習）等)
+            </div>
+            <div>
+             Site appraisal and practical will be conducted.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td class="lesson_plan_sell" colspan="2">
+           <div class=" h120">
+            <div class="lesson_plan_subheading">
+             (その他（オフィスアワー等）)
+            </div>
+            <div>
+             The course with experiments or offered outside of  the campus, state on the taking out accident insurance of Personal Accident Insurance for Students Pursuing Ed. &amp; Rsch. as needed.
+            </div>
+           </div>
+          </td>
+         </tr>
+         <tr>
+          <td align="center" bgcolor="#9DA0B4" class="th_top_normal syllabus_sell" colspan="4">
+           <img alt="" height="1" id="id_img_1373_4" src="/img/0.gif" width="1"/>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <br/>
+       <!--/syllabus -->
+      </center>
+      <center>
+       <table border="0" cellpadding="3" cellspacing="0">
+        <tbody>
+         <tr class="">
+          <td nowrap="">
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=99">
+            前の10件
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=95">
+            95
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=96">
+            96
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=97">
+            97
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=98">
+            98
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=99">
+            99
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" style="color: red">
+            100
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=101">
+            101
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=102">
+            102
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=103">
+            103
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=104">
+            104
+           </a>
+          </td>
+          <td>
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=105">
+            105
+           </a>
+          </td>
+          <td nowrap="">
+           <a class="pager_link" href="detail?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=101" id="id_a_1261_2">
+            次の10件
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </center>
+      <br/>
+      <br/>
+      <center>
+       <a href="../top" id="id_a_1374_4">
+        <img alt="HOMEへ" border="0" id="id_img_1374_5" src="/img/button_home.gif"/>
+       </a>
+       <a href="search?condition.courseType=&amp;condition.seriesName=&amp;condition.familyFieldName=&amp;condition.lectureStatusNo=1&amp;condition.langNum=&amp;condition.semester=&amp;condition.targetStudent=0&amp;condition.courseTitle=&amp;condition.courseTitleEn=&amp;condition.teacherName=&amp;condition.teacherNameEn=&amp;condition.itemInPage=10&amp;condition.syutyu=false&amp;condition.lectureCode=&amp;page=100" id="id_a_1374_5">
+        <img alt="戻る" border="0" id="id_img_1374_6" src="/img/button_back.gif"/>
+       </a>
+      </center>
+      <br/>
+      <br/>
+      <!--/+++++++++++++++++++++ contents +++++++++++++++++++++ -->
+      <!-- /contents -->
+      <div class="copyright">
+       <img alt="" src="/img/copyright.gif"/>
+      </div>
+     </div>
+    </div>
+    <div id="footer">
+    </div>
+    <div id="jsp_path">
+     student/la/syllabus/detail.jsp
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
