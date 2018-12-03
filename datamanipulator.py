@@ -44,7 +44,7 @@ class KUWebDriver():
             self.driver.get("https://www.k.kyoto-u.ac.jp/student/la/syllabus/detail?condition.courseType=&condition.seriesName=&condition.familyFieldName=&condition.lectureStatusNo=1&condition.langNum=&condition.semester=&condition.targetStudent=0&condition.courseTitle=&condition.courseTitleEn=&condition.teacherName=&condition.teacherNameEn=&condition.itemInPage=10&condition.syutyu=false&condition.lectureCode=&page="+str(k))
             with open("./data/syllabus/LA/"+str(k)+".html", 'w') as f:  # 0-indexed
                 f.write(self.driver.page_source)
-            sleep(1)
+            sleep(wait_sec)
 
     def quitDriver(self):
         self.driver.quit()
